@@ -1,0 +1,19 @@
+*.exe
+*.pdb
+*.manifest
+*.cache
+bin/
+bin
+/bin
+obj
+*.vs
+*.vscode
+*.orig
+
+# Serverless directories
+.serverless
+
+*.DotSettings.user
+deploy-package.zip
+
+*/aws-lambda-tools-defaults.json

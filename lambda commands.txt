@@ -1,0 +1,40 @@
+//Serverless create lambda function
+dotnet new --install "Amazon.Lambda.Templates"
+dotnet new serverless.AspNetCoreWebAPI
+
+//For a proper serverless file
+serverless create --template aws-csharp
+
+
+
+
+
+//used for packaging for pipeline via SLS
+dotnet restore
+dotnet lambda package --configuration release --framework netcoreapp2.1 --output-package deploy-package.zip
+AWS_PROFILE=test sls deploy --stage test --region eu-west-1
+
+
+//Used to package for deployment in Aws console
+dotnet publish --configuration release
+
+
+
+
+
+
+
+//List profiles
+aws lambda list-functions --profile dev
+
+
+aws lambda invoke \
+    --function-name fuinctWilly \
+    --invocation-type RequestResponse \
+    outfile.txt
+
+aws lambda invoke --function-name fuinctWilly --invocation-type RequestResponse  --payload file://C:/git/test.json outfile.txt --profile dev
+
+aws lambda invoke --function-name DynDbBackupTest-DynDbBackupFunction-GQQMURKH4AO5 --invocation-type RequestResponse  --payload file://C:/git/test2.json outfile.txt --profile dev
+
+
